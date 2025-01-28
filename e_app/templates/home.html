@@ -1,5 +1,227 @@
 {% extends 'layout/base.html' %}
 {% block content %}
-<h1> Energy management App</h1>
+
+
+{% include 'partials/navbar.html' %}
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">Energy Overview</div>
+          <div class="card-body">
+            <p>Total Energy Consumption: <strong>1,250 kWh</strong></p>
+            <p>Renewable Energy Usage: <strong>45%</strong></p>
+            <button class="btn btn-custom w-100">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">Daily Trends</div>
+          <div class="card-body">
+            <canvas id="dailyTrendsChart" style="height: 200px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">Notifications</div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item">Energy usage exceeded 1,200 kWh</li>
+              <li class="list-group-item">Scheduled maintenance on Jan 30</li>
+              <li class="list-group-item">New energy-saving tips available</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">Power Sources</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Grid</h5>
+                    <p class="card-text">Power supplied: <strong>800 kWh</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Generators</h5>
+                    <p class="card-text">Power supplied: <strong>300 kWh</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Solar</h5>
+                    <p class="card-text">Power supplied: <strong>150 kWh</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4 justify-content-center">
+              <div class="col-md-4 d-flex justify-content-center">
+                <canvas id="powerSourcesPieChart" style="height: 200px; width: 200px;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">Load Data</div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Start date</th>
+                  <th>End date</th>
+                  <th>Load (kWh)</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01/01/2025</td>
+                  <td>02/01/2025</td>
+                  <td>250</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>02/01/2025</td>
+                  <td>03/01/2025</td>
+                  <td>550</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td>03/01/2025</td>
+                  <td>04/01/2025</td>
+                  <td>350</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>04/01/2025</td>
+                  <td>05/01/2025</td>
+                  <td>150</td>
+                  <td>Low</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">Facility Loads</div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Load Name</th>
+                  <th>Power Rating (kW)</th>
+                  <th>Number</th>
+                  <th>Energy Consumed (kWh)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lighting</td>
+                  <td>5</td>
+                  <td>50</td>
+                  <td>250</td>
+                </tr>
+                <tr>
+                  <td>Desktop Computers</td>
+                  <td>20</td>
+                  <td>5</td>
+                  <td>600</td>
+                </tr>
+                <tr>
+                  <td>Printers</td>
+                  <td>0.5</td>
+                  <td>100</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Scanners</td>
+                  <td>50</td>
+                  <td>2</td>
+                  <td>500</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const dailyTrendsCtx = document.getElementById('dailyTrendsChart').getContext('2d');
+    new Chart(dailyTrendsCtx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Energy Consumption (kWh)',
+          data: [200, 250, 300, 350, 400, 300, 200],
+          borderColor: '#007bff',
+          borderWidth: 2,
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+
+    const powerSourcesCtx = document.getElementById('powerSourcesPieChart').getContext('2d');
+    new Chart(powerSourcesCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Grid', 'Generators', 'Solar'],
+        datasets: [{
+          label: 'Power Sources',
+          data: [800, 300, 150],
+          backgroundColor: ['#007bff', '#28a745', '#ffc107'],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  </script>
 
 {% endblock %}
