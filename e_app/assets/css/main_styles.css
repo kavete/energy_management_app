@@ -1,15 +1,4 @@
-
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/main_styles.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
-    <style>
-            body {
+    body {
       background-color: #e9ecef;
       color: #212529;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -67,18 +56,3 @@
     .list-group-item:hover {
       background-color: #f8f9fa;
     }
-
-    </style>
-</head>
-<body>
-{% block content %}
-
-{% endblock %}
-
-
-<script src="{% static 'js/bootstrap.bundle.js' %}">
-
-</script>
-</body>
-</html>
-
