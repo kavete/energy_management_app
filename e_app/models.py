@@ -15,9 +15,10 @@ class PowerSource(models.Model):
 
 class Load(models.Model):
     name = models.CharField(max_length=100)
-    power_rating = models.DecimalField(max_digits=20, decimal_places=2)
+    power_rating_in_Watts= models.DecimalField(max_digits=20, decimal_places=2)
     operating_hours_per_day = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField()
+    # total_energy_consumed_per_day = (power_rating_in_Watts * operating_hours_per_day * quantity)
 
     def __str__(self):
         return f"{self.name}"
@@ -44,3 +45,10 @@ class ConsumptionData(models.Model):
 
     def __str__(self):
         return f"{self.power_source.name}  From {self.start_date} to {self.end_date}"
+
+class Notification(models.Model):
+    title = models.CharField(max_length=50)
+    body = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.title}"
