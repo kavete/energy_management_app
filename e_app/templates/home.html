@@ -12,7 +12,7 @@
           <div class="card-header">Energy Overview</div>
           <div class="card-body">
             <p>Total Energy Consumption: <strong>{{ total_energy_consumed }} kWh</strong></p>
-            <p>Renewable Energy Usage: <strong>45%</strong></p>
+<!--            <p>Renewable Energy Usage: <strong>45%</strong></p>-->
             <button class="btn btn-custom w-100">View Details</button>
           </div>
         </div>
@@ -20,13 +20,29 @@
 
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-header">Daily Trends</div>
+          <div class="card-header">Solar Panels 1 Daily Trends</div>
           <div class="card-body">
-            <canvas id="dailyTrendsChart" style="height: 200px;"></canvas>
+            <div style="">
+               <img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Chart">
+            </div>
+
+<!--            <canvas id="dailyTrendsChart" style="height: 200px;"></canvas>-->
           </div>
         </div>
       </div>
 
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">Grid Monthly Trends</div>
+          <div class="card-body">
+            <div style="">
+               <img src="data:image/png;base64,{{ grid_chart }}" class="img-fluid" alt="Chart">
+            </div>
+
+<!--            <canvas id="dailyTrendsChart" style="height: 200px;"></canvas>-->
+          </div>
+        </div>
+      </div>
       <div class="col-lg-4">
         <div class="card">
           <div class="card-header">Notifications</div>
@@ -63,7 +79,8 @@
             </div>
             <div class="row mt-4 justify-content-center">
               <div class="col-md-4 d-flex justify-content-center">
-                <canvas id="powerSourcesPieChart" style="height: 200px; width: 200px;"></canvas>
+<!--                <canvas id="powerSourcesPieChart" style="height: 200px; width: 200px;"></canvas>-->
+                <img src="data:image/png;base64,{{ pie_chart }}" alt="Chart">
               </div>
             </div>
           </div>

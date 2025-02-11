@@ -30,12 +30,6 @@ class ConsumptionData(models.Model):
     end_date = models.DateField()
     # number_of_hours = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     power_consumed = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
-    # phase1_voltage = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    # phase2_voltage = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    # phase3_voltage = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    # phase1_current = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    # phase2_current = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    # phase3_current = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     frequency = models.DecimalField(max_digits=10, decimal_places=2, default=50)
     power_factor = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
