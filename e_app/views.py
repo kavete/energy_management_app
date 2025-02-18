@@ -39,7 +39,7 @@ def plot_power_consumption():
     if not data:
         return None
     # Extract dates and power consumption values
-    dates = [entry.start_date for entry in data]
+    dates = [entry.end_date for entry in data]
     power_consumption = [entry.power_consumed for entry in data]
 
     # Create the plot
@@ -73,7 +73,7 @@ def plot_grid_consumption():
     if not data:
         return None
     # Extract dates and power consumption values
-    dates = [entry.start_date for entry in data]
+    dates = [entry.end_date for entry in data]
     power_consumption = [entry.power_consumed for entry in data]
 
     # Create the plot
