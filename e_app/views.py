@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import PowerSource, ConsumptionData, Load, Notification
-from django.db.models import Sum
+from django.db.models import Sum, F, DecimalField
 import matplotlib.pyplot as plt
 from io import BytesIO
 import matplotlib.dates as mdates
@@ -85,6 +85,7 @@ def plot_grid_consumption():
     plt.xticks(rotation=45)
 
     # Labels and title
+    ax.set_ylim(400, float(max(power_consumption)) * 1.1)
     ax.set_xlabel("Date")
     ax.set_ylabel("Power Consumed (kWh)")
     ax.set_title("Power Consumption Over Time")
@@ -104,6 +105,13 @@ def home(request):
     consumption_data = ConsumptionData.objects.all()
     total_energy_consumed = consumption_data.aggregate(Sum('power_consumed')) ['power_consumed__sum'] or 0
     loads = Load.objects.all()
+    total_energy = Load.objects.aggregate(
+        total=Sum(
+            F('power_rating_in_Watts') * F('operating_hours_per_day') * F('quantity'),
+            output_field=DecimalField()
+        )
+    )['total']
+    total_energy = total_energy/1000
     # load_consumption_data_total_per_day = loads.aggregate(Sum(''))
     notifications = Notification.objects.all()
     chart = plot_power_consumption()
@@ -117,7 +125,8 @@ def home(request):
         "notifications": notifications,
         "chart": chart,
         "pie_chart": pie_chart,
-        "grid_chart": grid_chart
+        "grid_chart": grid_chart,
+        "total_energy": total_energy,
     }
     return  render(request, 'home.html', context)
 
