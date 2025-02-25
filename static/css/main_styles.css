@@ -32,65 +32,34 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Navbar */
-/* .navbar, #header {
-  background-color: #222;
-  border-bottom: 1px solid #333;
+
+.navbar {
+  background-color: #0f172a; /* Dark blueish similar to Django Admin dark mode */
+  border-bottom: 1px solid #1e293b;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-brand, #header h1 {
-  color: #00b4d8;
-}
-
-.navbar-brand:hover {
-  color: #48cae4;
-}
-*/
-
-.navbar, #header {
-  background-color: #0f172a !important; /* Dark blueish similar to Django Admin dark mode */
-  border-bottom: 1px solid #1e293b !important;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.navbar-brand, #header h1 {
-  color: #38bdf8 !important; /* Light blue for contrast */
+  color: #38bdf8 ; /* Light blue for contrast */
 }
 
 .navbar-brand:hover {
   color: #7dd3fc; /* Slightly brighter blue on hover */
 }
-
-/* Sidebar */
- /*#nav-sidebar {
-  background-color: #1e1e1e !important;
-  border-right: 1px solid #333 !important;
-}
-
-.nav-sidebar a {
-  color: #00b4d8 !important;
-}
-
-.nav-sidebar a:hover {
-  color: #48cae4 !important;
-  background-color: #333 !important;
-}
-*/
 /* Cards */
 .card, .module {
-  background-color: #222 !important;
-  border: 1px solid #333 !important;
+  background-color: #222;
+  border: 1px solid #333;
   border-radius: 5px;
-  color: #e3e3e3 !important;
+  color: #e3e3e3;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
-  background-color: #292929 !important;
-  border-bottom: 1px solid #444 !important;
+  background-color: #292929;
+  border-bottom: 1px solid #444;
   font-weight: bold;
-  color: #00b4d8 !important;
+  color: #00b4d8;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -130,7 +99,7 @@ button:hover, input[type="submit"]:hover, .button:hover {
 .list-group-item {
   border: 1px solid #333;
   background-color: #222;
-  color: #e3e3e3 !important;
+  color: #e3e3e3;
 }
 
 .list-group-item:hover {

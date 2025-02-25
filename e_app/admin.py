@@ -7,16 +7,16 @@ admin.site.index_title = "Welcome to the EnergyHive Dashboard"
 
 from .models import PowerSource, Load, ConsumptionData, Notification
 
-class CustomAdminSite(admin.AdminSite):
-    def each_context(self, request):
-        context = super().each_context(request)
-        context["css_files"] = [
-            "/static/admin/css/custom_admin.css",  # Load our yellow theme
-        ]
-        return context
-
-# Apply the custom theme
-admin.site = CustomAdminSite()
+# class CustomAdminSite(admin.AdminSite):
+#     def each_context(self, request):
+#         context = super().each_context(request)
+#         context["css_files"] = [
+#             "/static/admin/css/custom_admin.css",  # Load our yellow theme
+#         ]
+#         return context
+#
+# # Apply the custom theme
+# admin.site = CustomAdminSite()
 
 class ConsumptionDataAdmin(admin.ModelAdmin):
     list_display = ('power_source','start_date', 'end_date','power_consumed','dailyAverage')
