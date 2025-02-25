@@ -34,7 +34,7 @@ body {
 
 
 .navbar {
-  background-color: #0f172a !important; /* Dark blueish similar to Django Admin dark mode */
+  background-color: #0f172a; /* Dark blueish similar to Django Admin dark mode */
   border-bottom: 1px solid #1e293b;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
@@ -48,18 +48,18 @@ body {
 }
 /* Cards */
 .card, .module {
-  background-color: #222 !important;
-  border: 1px solid #333 !important;
+  background-color: #222;
+  border: 1px solid #333;
   border-radius: 5px;
-  color: #e3e3e3 !important;
+  color: #e3e3e3;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
-  background-color: #292929 !important;
-  border-bottom: 1px solid #444 !important;
+  background-color: #292929;
+  border-bottom: 1px solid #444;
   font-weight: bold;
-  color: #00b4d8 !important;
+  color: #00b4d8;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -82,8 +82,8 @@ tr:hover {
 */
 /* Buttons */
 button, input[type="submit"], .button {
-  background-color: #00b4d8 !important;
-  color: #fff !important;
+  background-color: #00b4d8;
+  color: #fff;
   border-radius: 5px;
   padding: 8px 16px;
   font-weight: bold;
@@ -99,7 +99,7 @@ button:hover, input[type="submit"]:hover, .button:hover {
 .list-group-item {
   border: 1px solid #333;
   background-color: #222;
-  color: #e3e3e3 !important;
+  color: #e3e3e3;
 }
 
 .list-group-item:hover {
