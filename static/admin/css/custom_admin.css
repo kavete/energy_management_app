@@ -1,0 +1,63 @@
+/* --- Custom Yellow Theme for Django Admin --- */
+body, .login {
+    background-color: #3d3b28 !important; /* Dark yellowish-brown background */
+    color: #f8f9fa !important;
+}
+
+/* Header */
+div.breadcrumbs {
+    background-color: #5a5000 !important; /* Darker golden navbar */
+    color: #ffeb99 !important;
+}
+
+.module h2, .module caption {
+    background-color: #6d5f00 !important; /* Deep gold */
+    color: white !important;
+}
+
+/* Sidebar & Buttons */
+button, input[type="submit"], input[type="button"], .button {
+    background-color: #ffcc00 !important;
+    color: #3d3b28 !important;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover, .button:hover {
+    background-color: #e6b800 !important;
+    transform: scale(1.05);
+}
+
+/* Table & List */
+.module {
+    background-color: #524d2e !important;
+    border: 1px solid #6d5f00 !important;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+th {
+    background-color: #6d5f00 !important;
+    color: white !important;
+}
+
+tr:nth-child(even) {
+    background-color: #5a5000 !important;
+}
+
+tr:hover {
+    background-color: #ffeb99 !important;
+    color: #3d3b28 !important;
+}
+
+/* Navbar */
+div#header {
+    background-color: #5a5000 !important;
+    border-bottom: 1px solid #6d5f00;
+    padding: 10px;
+}
+
+div#branding h1 {
+    color: #ffeb99 !important;
+}

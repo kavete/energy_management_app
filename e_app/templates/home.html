@@ -11,7 +11,7 @@
         <div class="card">
           <div class="card-header">Energy Overview</div>
           <div class="card-body">
-            <p>Total Energy Consumption: <strong>{{ total_energy_consumed }} kWh</strong></p>
+            <p>Total Energy Consumption: <strong>{{ total_energy_consumed|floatformat:2 }} kWh</strong></p>
 <!--            <p>Renewable Energy Usage: <strong>45%</strong></p>-->
             <button class="btn btn-custom w-100">View Details</button>
           </div>
@@ -20,7 +20,7 @@
 
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-header">Solar Panels 1 Daily Trends</div>
+          <div class="card-header">Main Solar Panels Daily Trends</div>
           <div class="card-body">
             <div style="">
                <img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Chart">
@@ -36,7 +36,7 @@
           <div class="card-header">Grid Monthly Trends</div>
           <div class="card-body">
             <div style="">
-               <img src="data:image/png;base64,{{ grid_chart }}" class="img-fluid" alt="Chart">
+               <img src="data:image/png;base64,{{ grid_chart }}" class="img-fluid" alt="Chart" style="max-width=2exit00px">
             </div>
 
 <!--            <canvas id="dailyTrendsChart" style="height: 200px;"></canvas>-->
@@ -45,7 +45,7 @@
       </div>
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-header">Notifications</div>
+          <div class="card-header" id="notifications">Notifications</div>
           <div class="card-body">
             <ul class="list-group">
               {% for notification in notifications %}
@@ -64,6 +64,7 @@
           <div class="card-body">
             <div class="row">
               {% for power_source in power_sources %}
+
               <div class="col-md-4">
                 <div class="card text-center">
                   <div class="card-body">
@@ -79,8 +80,7 @@
             </div>
             <div class="row mt-4 justify-content-center">
               <div class="col-md-4 d-flex justify-content-center">
-<!--                <canvas id="powerSourcesPieChart" style="height: 200px; width: 200px;"></canvas>-->
-                <img src="data:image/png;base64,{{ pie_chart }}" alt="Chart">
+                <img src="data:image/png;base64,{{ pie_chart }}" class="img-fluid" alt="Chart">
               </div>
             </div>
           </div>
@@ -88,12 +88,13 @@
       </div>
     </div>
 {% for power_source in power_sources %}
+    {% if power_source.active %}
     <div class="row mt-4">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">{{ power_source.name }} Consumption Data</div>
           <div class="card-body">
-            <table class="table table-striped">
+            <table class="table table-striped table-dark">
               <thead>
                 <tr>
                   <th>Start date</th>
@@ -122,15 +123,15 @@
         </div>
       </div>
     </div>
-
+    {% endif %}
     {% endfor %}
 
     <div class="row mt-4">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header">Facility Loads</div>
+          <div class="card-header" id="loads">Facility Loads</div>
           <div class="card-body">
-            <table class="table table-striped">
+            <table class="table table-striped table-dark">
               <thead>
                 <tr>
                   <th>Load Name</th>

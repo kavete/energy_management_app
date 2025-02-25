@@ -1,3 +1,4 @@
+import matplotlib
 from django.shortcuts import render, get_object_or_404
 from .models import PowerSource, ConsumptionData, Load, Notification
 from django.db.models import Sum, F, DecimalField
@@ -6,7 +7,7 @@ from io import BytesIO
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta
 import base64
-
+matplotlib.use('Agg')
 
 def plot_power_source_distribution():
     # Fetch power sources and their supplied power
@@ -40,7 +41,7 @@ def plot_power_consumption():
         return None
     # Extract dates and power consumption values
     dates = [entry.end_date for entry in data]
-    power_consumption = [entry.power_consumed for entry in data]
+    power_consumption = [entry.daily_average for entry in data]
 
     # Create the plot
     fig, ax = plt.subplots(figsize=(8, 4))
@@ -51,8 +52,9 @@ def plot_power_consumption():
     plt.xticks(rotation=45)
 
     # Labels and title
+    ax.set_ylim(200, float(max(power_consumption)) * 1.1)
     ax.set_xlabel("Date")
-    ax.set_ylabel("Power Consumed (kWh)")
+    ax.set_ylabel("Average Daily Power Consumed (kWh)")
     ax.set_title("Power Consumption Over Time")
     ax.legend()
     ax.grid(True)
@@ -73,7 +75,7 @@ def plot_grid_consumption():
     if not data:
         return None
     # Extract dates and power consumption values
-    dates = [entry.end_date for entry in data]
+    dates = [entry.start_date for entry in data]
     power_consumption = [entry.power_consumed for entry in data]
 
     # Create the plot
@@ -81,11 +83,11 @@ def plot_grid_consumption():
     ax.plot(dates, power_consumption, marker="o", linestyle="-", color="b", label="Power Consumption (kWh)")
 
     # Formatting the x-axis (dates)
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
     plt.xticks(rotation=45)
 
     # Labels and title
-    ax.set_ylim(400, float(max(power_consumption)) * 1.1)
+    ax.set_ylim(6000, float(max(power_consumption)) * 1.1)
     ax.set_xlabel("Date")
     ax.set_ylabel("Power Consumed (kWh)")
     ax.set_title("Power Consumption Over Time")
