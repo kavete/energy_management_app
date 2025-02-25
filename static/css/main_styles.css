@@ -1,58 +1,143 @@
-    body {
-      background-color: #e9ecef;
-      color: #212529;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
 
-    .navbar {
-      background-color: #343a40;
-      border-bottom: 1px solid #454d55;
-    }
+/* --- Django Admin Dark Mode Theme --- */
+.navbar, #header {
+  background-color: #1a1f36;
+  border-bottom: 1px solid #2c3e50;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
 
-    .navbar-brand {
-      color: #f8f9fa;
-    }
+.navbar-brand {
+  color: #00aaff;
+  transition: color 0.3s;
+}
 
-    .navbar-brand:hover {
-      color: #d4d9dd;
-    }
+.navbar-brand:hover {
+  color: #33ccff;
+}
 
-    .nav-link {
-      color: #ced4da;
-    }
+/* Navigation Links */
+.nav-link {
+  color: #00c3ff;
+  transition: color 0.3s;
+}
 
-    .nav-link:hover {
-      color: #f8f9fa;
-    }
+.nav-link:hover {
+  color: #66d9ff;
+}
 
-    .card {
-      background-color: #ffffff;
-      border: 1px solid #dee2e6;
-      border-radius: 0;
-    }
+/* General Styles */
+body {
+  background-color: #181818;
+  color: #e3e3e3;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
-    .card-header {
-      background-color: #f7f7f7;
-      border-bottom: 1px solid #dee2e6;
-      font-weight: bold;
-    }
+/* Navbar */
+/* .navbar, #header {
+  background-color: #222;
+  border-bottom: 1px solid #333;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
 
-    .btn-custom {
-      background-color: #007bff;
-      color: white;
-      border-radius: 0;
-    }
+.navbar-brand, #header h1 {
+  color: #00b4d8;
+}
 
-    .btn-custom:hover {
-      background-color: #0056b3;
-    }
+.navbar-brand:hover {
+  color: #48cae4;
+}
+*/
 
-    .list-group-item {
-      border: 1px solid #dee2e6;
-      background-color: #ffffff;
-      color: #212529;
-    }
+.navbar, #header {
+  background-color: #0f172a !important; /* Dark blueish similar to Django Admin dark mode */
+  border-bottom: 1px solid #1e293b !important;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
 
-    .list-group-item:hover {
-      background-color: #f8f9fa;
-    }
+.navbar-brand, #header h1 {
+  color: #38bdf8 !important; /* Light blue for contrast */
+}
+
+.navbar-brand:hover {
+  color: #7dd3fc; /* Slightly brighter blue on hover */
+}
+
+/* Sidebar */
+ /*#nav-sidebar {
+  background-color: #1e1e1e !important;
+  border-right: 1px solid #333 !important;
+}
+
+.nav-sidebar a {
+  color: #00b4d8 !important;
+}
+
+.nav-sidebar a:hover {
+  color: #48cae4 !important;
+  background-color: #333 !important;
+}
+*/
+/* Cards */
+.card, .module {
+  background-color: #222 !important;
+  border: 1px solid #333 !important;
+  border-radius: 5px;
+  color: #e3e3e3 !important;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: #292929 !important;
+  border-bottom: 1px solid #444 !important;
+  font-weight: bold;
+  color: #00b4d8 !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* Tables */
+/*
+th {
+  background-color: #292929 !important;
+  color: #00b4d8 !important;
+}
+
+tr:nth-child(even) {
+  background-color: #242424 !important;
+}
+
+tr:hover {
+  background-color: #333 !important;
+}
+
+*/
+/* Buttons */
+button, input[type="submit"], .button {
+  background-color: #00b4d8 !important;
+  color: #fff !important;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover, input[type="submit"]:hover, .button:hover {
+  background-color: #0096c7;
+  transform: scale(1.05);
+}
+
+/* List Items */
+.list-group-item {
+  border: 1px solid #333;
+  background-color: #222;
+  color: #e3e3e3 !important;
+}
+
+.list-group-item:hover {
+  background-color: #292929;
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.3s ease-in-out;
+}

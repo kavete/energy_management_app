@@ -33,6 +33,12 @@ class ConsumptionData(models.Model):
     frequency = models.DecimalField(max_digits=10, decimal_places=2, default=50)
     power_factor = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
+    @property
+    def daily_average(self):
+        if self.start_date and self.end_date:
+            days = (self.end_date - self.start_date).days
+            return self.power_consumed / days if days > 0 else 0
+
     class Meta:
         verbose_name_plural = "Consumption Data"
 
