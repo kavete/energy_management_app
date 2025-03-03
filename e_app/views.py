@@ -7,6 +7,9 @@ from io import BytesIO
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta
 import base64
+import requests
+from django.http import JsonResponse
+
 matplotlib.use('Agg')
 
 def plot_power_source_distribution():
@@ -157,3 +160,34 @@ def home(request):
 # def chart_view(request):
 #
 #     return render(request, "chart.html", {"chart": chart})
+
+
+def send_sms(request):
+    # URL for the Vonage SMS API
+    url = 'https://rest.nexmo.com/sms/json'
+
+    # Data to be sent in the POST request
+    data = {
+        'from': 'Vonage APIs',
+        'text': 'A text message sent using the Vonage SMS API',
+        'to': '254791869732',
+        'api_key': '0f4031b8',
+        'api_secret': 'Q1bDcP2t6Lof5VnF'
+    }
+
+    try:
+        # Make the POST request
+        response = requests.post(url, data=data)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            result = response.json()
+            return JsonResponse(result)
+        else:
+            # Handle errors
+            return JsonResponse({'error': 'Failed to send SMS'}, status=response.status_code)
+
+    except requests.exceptions.RequestException as e:
+        # Handle exceptions
+        return JsonResponse({'error': str(e)}, status=500)

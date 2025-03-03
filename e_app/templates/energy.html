@@ -1,0 +1,46 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<body>
+  <div class="container">
+    <h1 class="text-center">Energy Consumption Report</h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Source</th>
+            <th>Energy Consumed (kWh)</th>
+            <th>Percentage of Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Main Solar Panel</td>
+            <td>1200</td>
+            <td>40%</td>
+          </tr>
+          <tr>
+            <td>Grid</td>
+            <td>800</td>
+            <td>26.67%</td>
+          </tr>
+          <tr>
+            <td>Kenya Power</td>
+            <td>600</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>CERM-EsA Solar</td>
+            <td>400</td>
+            <td>13.33%</td>
+          </tr>
+          <tr class="table-info">
+            <td><strong>Total</strong></td>
+            <td><strong>3000</strong></td>
+            <td><strong>100%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+{% endblock %}
