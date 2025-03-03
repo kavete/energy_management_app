@@ -21,4 +21,5 @@ urlpatterns = [
     # path('', views.home),
     path('admin/', admin.site.urls),
     path('', include('e_app.urls')),
+    path('forecast/', include('forecast.urls')),
 ]
