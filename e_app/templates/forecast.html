@@ -1,11 +1,32 @@
 {% extends 'layout/base.html' %}
 
+
 {% block content %}
+
+{% include 'partials/navbar.html' %}
 <body>
-<div>
-     <img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Chart">
-     <img src="data:image/png;base64,{{ chart2 }}" class="img-fluid" alt="Chart2">
-</
-</div>
+    <div class="container mt-4">
+        <h1 class="text-center">Energy Consumption Prediction</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Main Solar Energy Prediction</h5>
+                        <img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Solar Energy Prediction">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Grid Energy Prediction (Kenya Power)</h5>
+                        <img src="data:image/png;base64,{{ chart2 }}" class="img-fluid" alt="Grid Energy Prediction">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 {% endblock %}
