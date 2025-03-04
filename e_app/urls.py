@@ -19,6 +19,6 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('', views.home, name='homepage'),
-    path('send-sms/', views.send_sms, name='send_sms'),
+    # path('send-sms/', views.send_sms, name='send_sms'),
     # path('chart/', views.chart_view, name='chart'),
 ]

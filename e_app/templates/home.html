@@ -13,7 +13,7 @@
           <div class="card-body">
             <p>Total Energy Consumption: <strong>{{ total_energy_consumed|floatformat:2 }} kWh</strong></p>
 <!--            <p>Renewable Energy Usage: <strong>45%</strong></p>-->
-            <button class="btn btn-custom w-100">View Details</button>
+           <a href="#power_sources"><button class="btn btn-custom w-100">View Details</button> </a>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
     <div class="row mt-4">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header">Power Sources</div>
+          <div class="card-header" id="power_sources">Power Sources</div>
           <div class="card-body">
             <div class="row">
               {% for power_source in power_sources %}

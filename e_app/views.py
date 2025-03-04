@@ -1,5 +1,7 @@
 import matplotlib
 from django.shortcuts import render, get_object_or_404
+from numpy.random import power
+
 from .models import PowerSource, ConsumptionData, Load, Notification
 from django.db.models import Sum, F, DecimalField
 import matplotlib.pyplot as plt
@@ -108,7 +110,8 @@ def plot_grid_consumption():
 def home(request):
     power_sources = PowerSource.objects.all()
     consumption_data = ConsumptionData.objects.all()
-    total_energy_consumed = consumption_data.aggregate(Sum('power_consumed')) ['power_consumed__sum'] or 0
+    total_energy_consumed = power_sources.aggregate(Sum('power_supplied')) ['power_supplied__sum'] or 0
+    # total_energy_consumed = consumption_data.aggregate(Sum('power_consumed')) ['power_consumed__sum'] or 0
     loads = Load.objects.all()
     total_energy = Load.objects.aggregate(
         total=Sum(
@@ -162,32 +165,32 @@ def home(request):
 #     return render(request, "chart.html", {"chart": chart})
 
 
-def send_sms(request):
-    # URL for the Vonage SMS API
-    url = 'https://rest.nexmo.com/sms/json'
-
-    # Data to be sent in the POST request
-    data = {
-        'from': 'Vonage APIs',
-        'text': 'A text message sent using the Vonage SMS API',
-        'to': '254791869732',
-        'api_key': '0f4031b8',
-        'api_secret': 'Q1bDcP2t6Lof5VnF'
-    }
-
-    try:
-        # Make the POST request
-        response = requests.post(url, data=data)
-
-        # Check if the request was successful
-        if response.status_code == 200:
-            # Parse the JSON response
-            result = response.json()
-            return JsonResponse(result)
-        else:
-            # Handle errors
-            return JsonResponse({'error': 'Failed to send SMS'}, status=response.status_code)
-
-    except requests.exceptions.RequestException as e:
-        # Handle exceptions
-        return JsonResponse({'error': str(e)}, status=500)
+# def send_sms(request):
+#     # URL for the Vonage SMS API
+#     url = 'https://rest.nexmo.com/sms/json'
+#
+#     # Data to be sent in the POST request
+#     data = {
+#         'from': 'Vonage APIs',
+#         'text': 'A text message sent using the Vonage SMS API',
+#         'to': '254791869732',
+#         'api_key': '0f4031b8',
+#         'api_secret': 'Q1bDcP2t6Lof5VnF'
+#     }
+#
+#     try:
+#         # Make the POST request
+#         response = requests.post(url, data=data)
+#
+#         # Check if the request was successful
+#         if response.status_code == 200:
+#             # Parse the JSON response
+#             result = response.json()
+#             return JsonResponse(result)
+#         else:
+#             # Handle errors
+#             return JsonResponse({'error': 'Failed to send SMS'}, status=response.status_code)
+#
+#     except requests.exceptions.RequestException as e:
+#         # Handle exceptions
+#         return JsonResponse({'error': str(e)}, status=500)
