@@ -1,88 +1,84 @@
-
-/* --- Django Admin Dark Mode Theme --- */
 .navbar, #header {
-  background-color: #1a1f36;
-  border-bottom: 1px solid #2c3e50;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-  color: #00aaff;
+  color: #007bff;
   transition: color 0.3s;
 }
 
 .navbar-brand:hover {
-  color: #33ccff;
+  color: #0056b3;
 }
 
 /* Navigation Links */
 .nav-link {
-  color: #00c3ff;
+  color: #007bff;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #66d9ff;
+  color: #0056b3;
 }
 
 /* General Styles */
 body {
-  background-color: #181818;
-  color: #e3e3e3;
+  background-color: #ffffff;
+  color: #212529;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-
 .navbar {
-  background-color: #0f172a; /* Dark blueish similar to Django Admin dark mode */
-  border-bottom: 1px solid #1e293b;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  background-color: #e3f2fd;
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand, #header h1 {
-  color: #38bdf8 ; /* Light blue for contrast */
+  color: #007bff;
 }
 
 .navbar-brand:hover {
-  color: #7dd3fc; /* Slightly brighter blue on hover */
+  color: #0056b3;
 }
+
 /* Cards */
 .card, .module {
-  background-color: #222;
-  border: 1px solid #333;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  color: #e3e3e3;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: #212529;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-  background-color: #292929;
-  border-bottom: 1px solid #444;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
   font-weight: bold;
-  color: #00b4d8;
+  color: #007bff;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
 /* Tables */
-/*
 th {
-  background-color: #292929 !important;
-  color: #00b4d8 !important;
+  background-color: #f8f9fa !important;
+  color: #007bff !important;
 }
 
 tr:nth-child(even) {
-  background-color: #242424 !important;
+  background-color: #f1f1f1 !important;
 }
 
 tr:hover {
-  background-color: #333 !important;
+  background-color: #e2e6ea !important;
 }
 
-*/
 /* Buttons */
 button, input[type="submit"], .button {
-  background-color: #00b4d8 !important;
+  background-color: #007bff !important;
   color: #fff !important;
   border-radius: 5px;
   padding: 8px 16px;
@@ -91,19 +87,19 @@ button, input[type="submit"], .button {
 }
 
 button:hover, input[type="submit"]:hover, .button:hover {
-  background-color: #0096c7;
+  background-color: #0056b3;
   transform: scale(1.05);
 }
 
 /* List Items */
 .list-group-item {
-  border: 1px solid #333;
-  background-color: #222;
-  color: #e3e3e3;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #212529;
 }
 
 .list-group-item:hover {
-  background-color: #292929;
+  background-color: #f8f9fa;
 }
 
 /* Smooth Transitions */

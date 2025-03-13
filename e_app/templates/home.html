@@ -11,8 +11,11 @@
         <div class="card">
           <div class="card-header">Energy Overview</div>
           <div class="card-body">
-            <p>Total Energy Consumption: <strong>{{ total_energy_consumed|floatformat:2 }} kWh</strong></p>
+            <p>January Total Energy Consumption: <strong>{{ total_energy_consumed|floatformat:2 }} kWh</strong></p>
+            <p> Total energy Consumed from Grid and Solar panels. Grid from August 2024 to January 2025 and Solar Panels from January 21st 2025 to February 25th 2025: <strong>{{ a_total_energy_consumed|floatformat:2 }}</strong> kWh</p>
 <!--            <p>Renewable Energy Usage: <strong>45%</strong></p>-->
+            <p>Solar: <strong> {{solar_total_energy|floatformat:2 }}</strong>kWh <br /> Grid: <strong>{{ grid_total_energy|floatformat:2 }}</strong>kWh</p>
+
            <a href="#power_sources"><button class="btn btn-custom w-100">View Details</button> </a>
           </div>
         </div>
@@ -20,7 +23,7 @@
 
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-header">Main Solar Panels Daily Trends</div>
+          <div class="card-header">Main Solar Panels Daily Trends (Jan 17<sup>th</sup> 2025 to Feb 25<sup>th</sup> 2025)</div>
           <div class="card-body">
             <div style="">
                <img src="data:image/png;base64,{{ chart }}" class="img-fluid" alt="Chart">
@@ -33,7 +36,7 @@
 
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-header">Grid Monthly Trends</div>
+          <div class="card-header">Grid Monthly Trends (Aug 2024 to Jan 2025)</div>
           <div class="card-body">
             <div style="">
                <img src="data:image/png;base64,{{ grid_chart }}" class="img-fluid" alt="Chart" style="max-width=2exit00px">
@@ -71,6 +74,10 @@
 
                     <h5 class="card-title">{{ power_source.name }}</h5>
                     <p class="card-text">Power supplied: <strong>{{ power_source.power_supplied }} kWh</strong></p>
+                    {% if power_source.start_date %}
+                    From: {{ power_source.start_date }} To: {{ power_source.end_date }}
+
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -94,7 +101,7 @@
         <div class="card">
           <div class="card-header">{{ power_source.name }} Consumption Data</div>
           <div class="card-body">
-            <table class="table table-striped table-dark">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Start date</th>
@@ -131,7 +138,7 @@
         <div class="card">
           <div class="card-header" id="loads">Facility Loads</div>
           <div class="card-body" style="overflow-x: auto;">
-            <table class="table table-striped table-dark">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Load Name</th>

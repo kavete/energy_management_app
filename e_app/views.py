@@ -111,14 +111,21 @@ def home(request):
     power_sources = PowerSource.objects.all()
     consumption_data = ConsumptionData.objects.all()
     total_energy_consumed = power_sources.aggregate(Sum('power_supplied')) ['power_supplied__sum'] or 0
-    # total_energy_consumed = consumption_data.aggregate(Sum('power_consumed')) ['power_consumed__sum'] or 0
+    a_total_energy_consumed = consumption_data.aggregate(Sum('power_consumed')) ['power_consumed__sum'] or 0
     loads = Load.objects.all()
+    solar = get_object_or_404(PowerSource, id=3)
+    grid =get_object_or_404(PowerSource, id=5)
+    solar_data = ConsumptionData.objects.filter(power_source=solar)
+    grid_data = ConsumptionData.objects.filter(power_source=grid)
     total_energy = Load.objects.aggregate(
         total=Sum(
             F('power_rating_in_Watts') * F('operating_hours_per_day') * F('quantity'),
             output_field=DecimalField()
         )
     )['total']
+
+    solar_total_energy = solar_data.aggregate(Sum('power_consumed')) ['power_consumed__sum'] or 0
+    grid_total_energy = grid_data.aggregate(Sum('power_consumed'))['power_consumed__sum'] or 0
     total_energy = total_energy/1000
     # load_consumption_data_total_per_day = loads.aggregate(Sum(''))
     notifications = Notification.objects.all()
@@ -130,11 +137,14 @@ def home(request):
         "consumption_data" : consumption_data,
         "loads": loads,
         "total_energy_consumed": total_energy_consumed,
+        "a_total_energy_consumed": a_total_energy_consumed,
         "notifications": notifications,
         "chart": chart,
         "pie_chart": pie_chart,
         "grid_chart": grid_chart,
         "total_energy": total_energy,
+        'solar_total_energy': solar_total_energy,
+        "grid_total_energy" :grid_total_energy,
     }
     return  render(request, 'home.html', context)
 
