@@ -14,7 +14,7 @@
             <p>January Total Energy Consumption: <strong>{{ total_energy_consumed|floatformat:2 }} kWh</strong></p>
             <p> Total energy Consumed from Grid and Solar panels. Grid from August 2024 to January 2025 and Solar Panels from January 21st 2025 to February 25th 2025: <strong>{{ a_total_energy_consumed|floatformat:2 }}</strong> kWh</p>
 <!--            <p>Renewable Energy Usage: <strong>45%</strong></p>-->
-            <p>Solar: <strong> {{solar_total_energy|floatformat:2 }}</strong>kWh <br /> Grid: <strong>{{ grid_total_energy|floatformat:2 }}</strong>kWh</p>
+            <p>Main Solar: <strong> {{solar_total_energy|floatformat:2 }}</strong>kWh <br /> Grid: <strong>{{ grid_total_energy|floatformat:2 }} </strong> kWh<br /> CERM-ESA Solar: <strong> {{ cerm_total_energy|floatformat:2 }}</strong>kWh</p>
 
            <a href="#power_sources"><button class="btn btn-custom w-100">View Details</button> </a>
           </div>
@@ -122,8 +122,12 @@
                   <td>{{ consumption_data.end_date }}</td>
                   <td>{{ consumption_data.power_consumed }}</td>
                 </tr>
+
               {% endif %}
               {% endfor %}
+              <tr>
+                <td>Totals</td> <td></td> <td> {% if power_source.name == "Main Solar Panels" %} {{ solar_total_energy|floatformat:2 }} {% endif %} {% if power_source.name == "Grid (Kenya Power)" %} {{ grid_total_energy|floatformat:2 }} {% endif %} {% if power_source.name == "CERM-ESA solar" %} {{ cerm_total_energy|floatformat:2 }} {% endif %}</td>
+              </tr>
               </tbody>
             </table>
           </div>
