@@ -1,0 +1,5 @@
+static/**/*.css linguist-vendored=true linguist-generated=true
+
+
+**/*.js linguist-vendored=true
+**/*.html linguist-vendored=true
